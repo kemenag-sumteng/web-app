@@ -1,5 +1,9 @@
 <div class="card">
 	<h1 class="card-header">Membuat Pengguna</h1>
 	<%= render 'form', pengguna: @pengguna %>
-	<%= link_to 'Kembali', pengguna_index_path, :class => "btn btn-secondary" %>
+	<% if logged_in? %>
+		<%= link_to 'Kembali', pengguna_index_path, :class => "btn btn-secondary" %>
+	<% else %>
+		<%= link_to 'Batal', root_path, :class => "btn btn-secondary" %>
+	<% end %>
 </div>
