@@ -14,9 +14,13 @@
     <div class="primary-nav">
       <%= render "partial/navigation" %>
       <div class="container-fluid">
-        <span></span>
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
         <%= yield %>
-        <span></span>
       </div>
       <div class="primary-footer">
       <%= render "partial/footer" %>
