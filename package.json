@@ -1,7 +1,5 @@
 {
   "name": "web-app",
   "private": true,
-  "dependencies": {
-    "bulma": "^0.7.4"
-  }
+  "dependencies": {}
 }
