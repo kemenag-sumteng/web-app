@@ -19,6 +19,7 @@ class PenggunaController < ApplicationController
 
   # GET /pengguna/1/edit
   def edit
+    @pengguna ||= Pengguna.find_by(id: pengguna_id)
   end
 
   # POST /pengguna
