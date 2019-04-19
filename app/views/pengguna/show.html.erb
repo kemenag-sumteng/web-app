@@ -1,14 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Nama lengkap:</strong>
-  <%= @pengguna.nama_lengkap %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @pengguna.email %>
-</p>
-
-<%= link_to 'Edit', edit_pengguna_path(@pengguna) %> |
-<%= link_to 'Back', pengguna_index_path %>
+<div class="card">
+	<h1 class="card-header"><%= @pengguna.nama_lengkap %></h1>
+	<div class="card-body">
+		<p>
+			<strong>email:</strong>
+			<%= @pengguna.email %>
+		</p>
+	</div>
+	<div class="btn-group" role="group" aria-label="tampilkan-kembali">
+  	<%= link_to 'Edit', edit_pengguna_path(@pengguna), :class => "btn btn-primary" %>
+  	<%= link_to 'Kembali', pengguna_index_path, :class => "btn btn-secondary" %>
+  </div>
+</div>

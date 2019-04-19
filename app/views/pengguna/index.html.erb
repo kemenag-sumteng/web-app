@@ -1,29 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Pengguna</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nama lengkap</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pengguna.each do |pengguna| %>
-      <tr>
-        <td><%= pengguna.nama_lengkap %></td>
-        <td><%= pengguna.email %></td>
-        <td><%= link_to 'Show', pengguna %></td>
-        <td><%= link_to 'Edit', edit_pengguna_path(pengguna) %></td>
-        <td><%= link_to 'Destroy', pengguna, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="card">
+  <h1 class="card-header bg-success text-white">Daftar Pengguna</h1>
+</div>
+<p></p>
+<div class="container-fluid mt-4">
+  <div class="row justify-content-center">
+  <% @pengguna.each do |pengguna| %>
+    <div class="col-auto mb-3">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <p class="card-text"><%= pengguna.nama_lengkap %></p>
+          <p class="card-text"><%= pengguna.email %></p>
+        </div>
+        <div class="card-body">
+          <div class="btn-group btn-group-lg" role="group" aria-label="tampilkan-kembali">
+            <button type="button" class="btn btn-light"><%= link_to fa_icon("eye"), pengguna %></button>
+            <button type="button" class="btn btn-light"><%= link_to fa_icon("pencil"), edit_pengguna_path(pengguna) %></button>
+            <button type="button" class="btn btn-light"><%= link_to fa_icon("trash"), pengguna, method: :delete, data: { confirm: 'Anda yakin?' } %></button>
+          </div>
+        </div>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
-
+  </div>
+</div>
 <br>
-
-<%= link_to 'New Pengguna', new_pengguna_path %>
+<%= link_to "Membuat Pengguna", new_pengguna_path, :class => "btn btn-primary" %>

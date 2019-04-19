@@ -1,37 +1,19 @@
-<%= form_with(model: pengguna, local: true) do |form| %>
-  <% if pengguna.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(pengguna.errors.count, "error") %> prohibited this pengguna from being saved:</h2>
-
-      <ul>
-      <% pengguna.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= bootstrap_form_for(@pengguna, local: true) do |form| %>
+  <div class="card-body">
+    <div class="field">
+      <%= form.text_field :nama_lengkap %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :nama_lengkap %>
-    <%= form.text_field :nama_lengkap %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <div class="field">
+      <%= form.text_area :email %>
+    </div>
+    <div class="field">
+      <%= form.password_field :password %>
+    </div>
+    <div class="field">
+      <%= form.password_field :password_confirmation %>
+    </div>
+    <div class="actions">
+      <%= form.submit "Konfirmasi", class: "btn btn-success" %>
+    </div>
   </div>
 <% end %>
