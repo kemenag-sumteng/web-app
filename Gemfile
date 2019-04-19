@@ -5,6 +5,7 @@ ruby '2.5.3'
 
 # Boostrap
 gem 'bootstrap', '~> 4.3.1'
+gem 'bootstrap_form', '>= 4.2.0'
 # jQuery
 gem 'jquery-rails'
 # Font Awesome
