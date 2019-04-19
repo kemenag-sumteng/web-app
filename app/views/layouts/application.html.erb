@@ -11,12 +11,16 @@
   </head>
 
   <body>
-    <%= render "partial/navigation" %>
-    <section class="section">
-      <div class="container">
+    <div class="primary-nav">
+      <%= render "partial/navigation" %>
+      <div class="container-fluid">
+        <span></span>
         <%= yield %>
+        <span></span>
       </div>
-    </section>
-    <%= render "partial/footer" %>
+      <div class="primary-footer">
+      <%= render "partial/footer" %>
+    </div>
+    </div>
   </body>
 </html>
