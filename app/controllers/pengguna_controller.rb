@@ -1,5 +1,5 @@
 class PenggunaController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update, :destroy]
   before_action :set_pengguna, only: [:show, :edit, :update, :destroy]
 
@@ -79,7 +79,8 @@ class PenggunaController < ApplicationController
     # Confirms a logged-in user.
     def logged_in_user
       unless logged_in?
-        redirect_to login_url, notice: "Sebelum mengedit akun, Anda harus masuk terlebih dahulu."
+        store_location
+        redirect_to login_url, notice: "Maaf, untuk melihat halaman tersebut Anda harus masuk terlebih dahulu."
       end
     end
 

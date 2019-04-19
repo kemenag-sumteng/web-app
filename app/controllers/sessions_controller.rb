@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if pengguna && pengguna.authenticate(params[:session][:password])
       log_in pengguna
       params[:session][:remember_me] == '1' ? remember(pengguna) : forget(pengguna)
-      redirect_to root_path, notice: "Anda berhasil masuk."
+      redirect_back_or pengguna
     else
       flash.now[:danger] = "Email atau password tidak valid"
       render "new"
