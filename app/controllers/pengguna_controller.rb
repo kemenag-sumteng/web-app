@@ -28,7 +28,7 @@ class PenggunaController < ApplicationController
 
     respond_to do |format|
       if @pengguna.save
-        format.html { redirect_to @pengguna, notice: 'Pengguna was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Anda telah berhasil mendaftar.' }
         format.json { render :show, status: :created, location: @pengguna }
       else
         format.html { render :new }
