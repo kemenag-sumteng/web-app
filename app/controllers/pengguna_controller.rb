@@ -28,6 +28,7 @@ class PenggunaController < ApplicationController
 
     respond_to do |format|
       if @pengguna.save
+        session[:pengguna_id] = @pengguna.id
         format.html { redirect_to root_path, notice: 'Anda telah berhasil mendaftar.' }
         format.json { render :show, status: :created, location: @pengguna }
       else
