@@ -1,7 +1,4 @@
 class PenggunaController < ApplicationController
-  attr_accessor :remember_token, :activation_token
-  before_save   :downcase_email
-  before_create :create_activation_digest
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update, :destroy]
   before_action :set_pengguna, only: [:show, :edit, :update, :destroy]
@@ -97,20 +94,15 @@ class PenggunaController < ApplicationController
       redirect_to(root_url, notice: "Maaf, hanya Akun milik pribadi yang dapat diedit.") unless current_user?(@pengguna)
     end
 
-    # Create the token and digest.
-    def create_activation_digest
-      self.activation_token  = Pengguna.new_token
-      self.activation_digest = Pengguna.digest(activation_token)
+    # Returns the hash digest of the given string.
+    def Pengguna.digest(string)
+      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+      BCrypt::Password.create(string, cost: cost)
     end
 
     # Remembers a user in the database for use in persistent sessions.
     def remember
       self.remember_token = Pengguna.new_token
       update_attribute(:remember_digest, Pengguna.digest(remember_token))
-    end
-
-    # Converts email to all lower-case.
-    def downcase_email
-      self.email = email.downcase
     end
 end
