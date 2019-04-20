@@ -35,9 +35,8 @@ class PenggunaController < ApplicationController
 
     respond_to do |format|
       if @pengguna.save
-        session[:pengguna_id] = @pengguna.id
-        format.html { redirect_to root_path, notice: 'Selamat datang.' }
-        format.json { render :show, status: :created, location: @pengguna }
+        PenggunaMailer.account_aktivation(@pengguna).deliver_now
+        flash[:info] = "Untuk mengaktifkan akun Anda, klik pada tautan yang terdapat pada email yang baru saja kami kirim."
       else
         format.html { render :new }
         format.json { render json: @pengguna.errors, status: :unprocessable_entity }
