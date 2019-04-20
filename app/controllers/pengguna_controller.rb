@@ -37,8 +37,9 @@ class PenggunaController < ApplicationController
     if @pengguna.save
       @pengguna.send_activation_email
       flash[:info] = "Untuk mengaktifkan akun Anda, klik pada tautan yang terdapat pada email yang baru saja kami kirim."
+      redirect_to root_url
     else
-      render :new
+      render 'new'
     end
   end
 
