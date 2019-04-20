@@ -1,3 +1,5 @@
-Pengguna#account_activation
+Halo <%= @pengguna.nama_lengkap %>
 
-<%= @greeting %>, find me in app/views/pengguna_mailer/account_activation.text.erb
+Terima kasih telah berkenan untuk bergabung di Web Aplikasi Bimas Katolik Kantor Kementerian Agama Kabupaten Sumba Tengah. Untuk mengaktifkan akun Anda, mohon klik tautan yang tersedia di bawah ini.
+
+<%= edit_account_activation_url(@pengguna.activation_token, email: @pengguna.email) %>
