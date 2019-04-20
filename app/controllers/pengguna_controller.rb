@@ -38,8 +38,7 @@ class PenggunaController < ApplicationController
       @pengguna.send_activation_email
       flash[:info] = "Untuk mengaktifkan akun Anda, klik pada tautan yang terdapat pada email yang baru saja kami kirim."
     else
-      format.html { render :new }
-      format.json { render json: @pengguna.errors, status: :unprocessable_entity }
+      render :new
     end
   end
 
