@@ -32,15 +32,12 @@ class PenggunaController < ApplicationController
   # POST /pengguna.json
   def create
     @pengguna = Pengguna.new(pengguna_params)
-
-    respond_to do |format|
-      if @pengguna.save
-        PenggunaMailer.account_aktivation(@pengguna).deliver_now
-        flash[:info] = "Untuk mengaktifkan akun Anda, klik pada tautan yang terdapat pada email yang baru saja kami kirim."
-      else
-        format.html { render :new }
-        format.json { render json: @pengguna.errors, status: :unprocessable_entity }
-      end
+    if @pengguna.save
+      @pengguna.send_activation_email
+      flash[:info] = "Untuk mengaktifkan akun Anda, klik pada tautan yang terdapat pada email yang baru saja kami kirim."
+    else
+      format.html { render :new }
+      format.json { render json: @pengguna.errors, status: :unprocessable_entity }
     end
   end
 

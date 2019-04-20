@@ -47,7 +47,16 @@ class Pengguna < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
-  
+  # Activates an account.
+  def activate
+    update_attribute(:activated,    true)
+    update_attribute(:activated_at, Time.zone.now)
+  end
+
+  # Sends activation email.
+  def send_activation_email
+    PenggunaMailer.account_activation(self).deliver_now
+  end
 
   private
   # Create the token and digest.
