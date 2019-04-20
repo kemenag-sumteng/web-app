@@ -10,12 +10,14 @@ class PenggunaController < ApplicationController
   # GET /pengguna
   # GET /pengguna.json
   def index
-    @pengguna = Pengguna.all
+    @pengguna = Pengguna.where(activated: true).paginate(page: params[:page])
   end
 
   # GET /pengguna/1
   # GET /pengguna/1.json
   def show
+    @pengguna = Pengguna.find(params[:id])
+    redirect_to root_url and return unless @pengguna.activated?
   end
 
   # GET /pengguna/new
