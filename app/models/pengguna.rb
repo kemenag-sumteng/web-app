@@ -61,7 +61,7 @@ class Pengguna < ApplicationRecord
   # Create the token and digest.
   def create_activation_digest
     self.activation_token  = Pengguna.new_token
-    self.aktivation_digest = Pengguna.digest(activation_token)
+    self.activation_digest = Pengguna.digest(activation_token)
   end
 
   # Converts email to all lower-case.
