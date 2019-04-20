@@ -3,6 +3,10 @@ class PenggunaController < ApplicationController
   before_action :correct_user,   only: [:edit, :update, :destroy]
   before_action :set_pengguna, only: [:show, :edit, :update, :destroy]
 
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    redirect_to :root, alert: 'Maaf, data pengguna yang Anda inginkan tidak dapat ditemukan.'
+  end
+
   # GET /pengguna
   # GET /pengguna.json
   def index
